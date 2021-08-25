@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medical_app/Constant1.dart';
+import 'package:medical_app/data/AllDonation.dart';
 
 class Irfan extends StatefulWidget {
   const Irfan({ Key? key }) : super(key: key);
@@ -139,8 +140,10 @@ class _IrfanState extends State<Irfan> {
                      child:Column(
                        children: [
                      SizedBox(height: 10,),
-                    buildClassItem(),
-                    buildClassItem(),
+                     Tiles(),
+                     Tiles(),
+                    // buildClassItem(),
+                    // buildClassItem(),
                        ],
                      ),
                    )
@@ -303,8 +306,41 @@ class _IrfanState extends State<Irfan> {
                 ],
               ),
             ],
-          )
+          ),
         ],
+      ),
+    );
+  }
+}
+class Tiles extends StatelessWidget {
+
+
+  @override
+  var id;
+  var nameMed;
+  var priceMed;
+  var expMed;
+  var lenghtM=2;
+  List<dynamic> namelist = ['ab'];
+  List<dynamic> nameprice = ['10'];
+  List<dynamic> nameexp = ["4"];
+  List<dynamic> Images=['assets/aq1.jpg'];
+  Widget build(BuildContext context) {
+ return   Container(
+  //  color: Colors.red,
+      child: ListView.builder(
+        itemCount: 1,
+        // scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        physics: ScrollPhysics(),
+        itemBuilder: (context, index) {
+          return AllDoMedicine(
+            image: Images[index],
+            priceMedd: nameprice[index],
+            nameMedd: namelist[index],
+            expMedd: nameexp[index],
+          );
+        },
       ),
     );
   }

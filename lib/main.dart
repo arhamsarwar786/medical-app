@@ -268,22 +268,7 @@ class Ali extends StatelessWidget {
                               )
                             ],
                           ),
-                          Container(
-                            child: ListView.builder(
-                              itemCount: lenghtM.length,
-                              // scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              physics: ScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return AllDoMedicine(
-                                  image: Images[index],
-                                  priceMedd: nameprice[index],
-                                  nameMedd: namelist[index],
-                                  expMedd: nameexp[index],
-                                );
-                              },
-                            ),
-                          ),
+                          DonationTiles(lenghtM: lenghtM, Images: Images, nameprice: nameprice, namelist: namelist, nameexp: nameexp),
                         ],
                       ),
                     ),
@@ -292,6 +277,43 @@ class Ali extends StatelessWidget {
               ),
             );
           }),
+    );
+  }
+}
+
+class DonationTiles extends StatelessWidget {
+  const DonationTiles({
+    Key? key,
+    required this.lenghtM,
+    required this.Images,
+    required this.nameprice,
+    required this.namelist,
+    required this.nameexp,
+  }) : super(key: key);
+
+  final  lenghtM;
+  final List<String> Images;
+  final List nameprice;
+  final List namelist;
+  final List nameexp;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ListView.builder(
+        itemCount: lenghtM.length,
+        // scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        physics: ScrollPhysics(),
+        itemBuilder: (context, index) {
+          return AllDoMedicine(
+            image: Images[index],
+            priceMedd: nameprice[index],
+            nameMedd: namelist[index],
+            expMedd: nameexp[index],
+          );
+        },
+      ),
     );
   }
 }
